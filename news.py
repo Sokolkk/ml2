@@ -8,7 +8,7 @@ import pandas as pd
 df = pd.read_csv('news-train.csv')
 X = df["HEADER"]
 y = df["CAT"]
-vect = TfidfVectorizer(analyzer='word',stop_words='english')
+vect = TfidfVectorizer(analyzer='word',stop_words='english',ngram_range = (1,2))
 X = vect.fit_transform(X)
 X_train,X_test,y_train,y_test=train_test_split(X,y,stratify=y,random_state=5)
 C = 1.0
